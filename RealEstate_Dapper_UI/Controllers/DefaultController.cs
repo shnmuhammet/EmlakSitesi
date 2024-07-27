@@ -10,4 +10,3 @@ namespace RealEstate_Dapper_UI.Controllers
         }
     }
 }
-//deneme
