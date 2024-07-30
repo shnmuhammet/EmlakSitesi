@@ -1,29 +1,31 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using RealEstate_Dapper_UI.Dtos.ProductDtos;
-
-namespace RealEstate_Dapper_UI.ViewComponent.HomePage
+using RealEstate_Dapper_UI.Dtos.ProductDtos; 
+namespace RealEstate_Dapper_UI.ViewComponents.HomePage
 {
-    public class _DefaultHomePageProductList
-    {
-        private readonly IHttpClientFactory _httpClientFactory;
-
-        public _DefaultHomePageProductList(IHttpClientFactory httpClientFactory)
+    
+        
+        public class _DefaultHomePageProductList :ViewComponent 
         {
-            _httpClientFactory = httpClientFactory;
-        }
+            private readonly IHttpClientFactory _httpClientFactory;
 
-        public async Task<IViewComponentResult> InvokeAsync()
-        {
-            var client = _httpClientFactory.CreateClient();
-            var responseMesssage = await client.GetAsync("https://localhost:44309/api/Products/ProductListWithCategory");
-            if (responseMesssage.IsSuccessStatusCode)
+            public _DefaultHomePageProductList(IHttpClientFactory httpClientFactory)
             {
-                var jsonData = await responseMesssage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultProductDtos>>(jsonData);
-                return View(values);
+                _httpClientFactory = httpClientFactory;
             }
-            return View();
+
+            public async Task<IViewComponentResult>InvokeAsync()
+            {
+                var client=_httpClientFactory.CreateClient();
+                var responseMessage = await client.GetAsync("https://localhost:7152/api/Products/ProductListWithCategory");
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                    var values = JsonConvert.DeserializeObject<List<ResultProductDtos>>(jsonData);
+                return View(values);
+                }
+                return View();
+            }
         }
-    }
+    
 }
