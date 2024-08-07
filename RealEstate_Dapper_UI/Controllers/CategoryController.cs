@@ -54,7 +54,7 @@ namespace RealEstate_Dapper_UI.Controllers
             }
             return View();
         }
-        //Silme İşlemi
+        
         [HttpGet]
         public async Task<IActionResult> UpdateCategory(int id)
         {
@@ -68,7 +68,7 @@ namespace RealEstate_Dapper_UI.Controllers
             }
             return View();
         }
-        //Güncelleme İşlemi
+        
         [HttpPost]
         public async Task<IActionResult> UpdateCategory(UpdateCategoryDto updateCategoryDto)
         {
