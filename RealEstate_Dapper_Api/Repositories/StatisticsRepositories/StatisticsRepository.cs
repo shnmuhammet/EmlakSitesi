@@ -35,32 +35,62 @@ namespace RealEstate_Dapper_Api.Repositories.StatisticsRepositories
 
         public int ApartmentCount()
         {
-            throw new NotImplementedException();
+            string query = "select Count(*) from Product where Title like'%Daire%'";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<int>(query);
+                return values;
+            }
         }
 
-        public decimal AvgProductByRent()
+        public decimal AvgProductPriceByRent()
         {
-            throw new NotImplementedException();
+            string query = "select AVG(Price) from Product where Type='Kiralık'";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<decimal>(query);
+                return values;
+            }
         }
 
-        public decimal AvgProductBySale()
+        public decimal AvgProductPriceBySale()
         {
-            throw new NotImplementedException();
+            string query = "select AVG(Price) from Product where Type='Satılık'";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<decimal>(query);
+                return values;
+            }
         }
 
         public string AvgRoomCount()
         {
-            throw new NotImplementedException();
+            string query = "select AVG(RoomCount) from ProductDetails";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<string>(query);
+                return values;
+            }
         }
 
         public int CategoryCount()
         {
-            throw new NotImplementedException();
+            string query = "select COUNT(*) from Category";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<int>(query);
+                return values;
+            }
         }
 
         public string CategoryNameByMaxProductCount()
         {
-            throw new NotImplementedException();
+            string query = "select top(1) CategoryName,count(*) from product inner join Category on Product.ProductCategory=Category.CategoryID group by CategoryName order by count(*) desc";
+            using (var connection = _context.CreateConnection())
+            {
+                var values = connection.QueryFirstOrDefault<string>(query);
+                return values;
+            }
         }
 
         public string CityNameByMaxProductCount()
