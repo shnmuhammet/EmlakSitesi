@@ -54,6 +54,46 @@ namespace RealEstate_Dapper_Api.Controllers
         {
             return Ok(_statisticsRepository.CategoryNameByMaxProductCount());
         }
+        [HttpGet("CityNameByMaxProductCount)")]
+        public IActionResult CityNameByMaxProductCount()
+        {
+            return Ok(_statisticsRepository.CityNameByMaxProductCount());
+        }
+        [HttpGet("DiffrentCityCount)")]
+        public IActionResult DiffrentCityCount()
+        {
+            return Ok(_statisticsRepository.DiffrentCityCount());
+        }
+        [HttpGet("EmployeeNameByMaxProductCount)")]
+        public IActionResult EmployeeNameByMaxProductCount()
+        {
+            return Ok(_statisticsRepository.EmployeeNameByMaxProductCount());
+        }
+        [HttpGet("lastProductPrice)")]
+        public IActionResult lastProductPrice()
+        {
+            return Ok(_statisticsRepository.lastProductPrice());
+        }
+        [HttpGet("NewestBuildingYear)")]
+        public IActionResult NewestBuildingYear()
+        {
+            return Ok(_statisticsRepository.NewestBuildingYear());
+        }
+        [HttpGet("OldestBuildingYear)")]
+        public IActionResult OldestBuildingYear()
+        {
+            return Ok(_statisticsRepository.OldestBuildingYear());
+        }
+        [HttpGet("PassiveCategoryCount)")]
+        public IActionResult PassiveCategoryCount()
+        {
+            return Ok(_statisticsRepository.PassiveCategoryCount());
+        }
+        [HttpGet("ProductCount)")]
+        public IActionResult ProductCount()
+        {
+            return Ok(_statisticsRepository.ProductCount());
+        }
 
     }
 }
