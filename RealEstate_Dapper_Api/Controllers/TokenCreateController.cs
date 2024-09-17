@@ -8,6 +8,7 @@ namespace RealEstate_Dapper_Api.Controllers
     [ApiController]
     public class TokenCreateController : ControllerBase
     {
+
         [HttpPost]
         public IActionResult CreateToken(GetCheckAppUserViewModel model)
         {
